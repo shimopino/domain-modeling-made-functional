@@ -70,3 +70,16 @@ const address = 'address-value' as Address;
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 console.log(productCode === address);
+
+const checkProductCodeExists = (
+  unvalidatedProductCode: string,
+): ProductCode => {
+  return unvalidatedProductCode as ProductCode;
+};
+
+const checkPrice = (productCode: ProductCode) => {
+  return productCode;
+};
+
+const validatedProductCode = checkProductCodeExists('44-1234');
+checkPrice(validatedProductCode);
