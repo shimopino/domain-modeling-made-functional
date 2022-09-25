@@ -4,26 +4,18 @@ import { err, ok } from './Result';
 
 const EmptyStringError = {
   type: 'EmptyStringError',
-};
+} as const;
 type EmptyStringError = typeof EmptyStringError;
 
 const String20OverError = {
   type: 'String20OverError',
-};
+} as const;
 type String20OverError = typeof String20OverError;
 
 type ValidationError = EmptyStringError | String20OverError;
 
-// const hello = (name: string): Result<string, EmptyStringError> => {
-//   if (name === '') {
-//     return err(EmptyStringError);
-//   }
-
-//   return ok(`hello ${name}`);
-// };
-
 test('[成功ケース] mapError関数を使用して、エラー型を異なるエラー型に変換する', () => {
-  const validationError = (input: EmptyStringError) => input as ValidationError;
+  const validationError = (input: ValidationError) => input as ValidationError;
   const mapErrorHello = mapError(validationError);
 
   const input = ok('shimokawa');
@@ -36,10 +28,10 @@ test('[成功ケース] mapError関数を使用して、エラー型を異なる
 });
 
 test('[失敗ケース] mapError関数を使用して、エラー型を異なるエラー型に変換する', () => {
-  const validationError = (input: EmptyStringError) => input as ValidationError;
+  const validationError = (input: ValidationError) => input as ValidationError;
   const mapErrorHello = mapError(validationError);
 
-  const input = err({ type: 'EmptyStringError' });
+  const input = err(EmptyStringError);
   const result = mapErrorHello(input);
 
   expect(result.ok).toBe(false);
