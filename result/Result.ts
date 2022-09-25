@@ -15,3 +15,25 @@ export const err = <E>(error: E): Err<E> => {
     error,
   };
 };
+
+type ResultFunc<T, E> = (args: any) => Result<T, E>;
+
+export const bind =
+  <T, E>(cb: ResultFunc<T, E>) =>
+  (result: Result<T, E>) => {
+    if (result.ok) {
+      return cb(result.value);
+    } else {
+      return err(result.error);
+    }
+  };
+
+export const mapError =
+  <T, E>(cb: ResultFunc<T, E>) =>
+  (result: Result<T, E>) => {
+    if (result.ok) {
+      return ok(result.value);
+    } else {
+      return err(cb(result.error));
+    }
+  };
