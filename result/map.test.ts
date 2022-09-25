@@ -4,6 +4,13 @@ import { err, ok } from './Result';
 
 const convert = (input: number) => String(input);
 
+test('元の関数', () => {
+  const input = 100;
+  const result = convert(input);
+
+  expect(result).toBe('100');
+});
+
 test('[成功ケース] map関数を使用して、Result型を返す関数に変換する', () => {
   const mapConvert = map(convert);
 
