@@ -6,6 +6,7 @@ import { bind } from '../bind';
 
 type NonNegativeError = { type: 'NonNegativeError' };
 type Over20Error = { type: 'Over20Error' };
+type Contain20Error = { type: 'Contain20Error' };
 // type ValidationError = NonNegativeError | Over20Error;
 
 // const toValidationError = (input: unknown) => input as ValidationError;
@@ -24,6 +25,14 @@ const numberToString = (input: number): Result<string, Over20Error> => {
   }
 
   return ok(String(input));
+};
+
+const helloString = (input: string): Result<string, Contain20Error> => {
+  if (input.includes('20')) {
+    return err({ type: 'Contain20Error' });
+  }
+
+  return ok(`hello ${input}`);
 };
 
 test('関数を結合させていく', () => {
@@ -65,5 +74,14 @@ test('[Over20Error] 関数を結合させていく', () => {
   expect(result.ok).toBe(false);
   if (!result.ok) {
     expect(result.error).toEqual({ type: 'Over20Error' });
+  }
+});
+
+test('連結を深くしていく', () => {
+  const result = pipeWith(5, add10, bind(numberToString), bind(helloString));
+
+  expect(result.ok).toBe(true);
+  if (result.ok) {
+    expect(result.value).toBe('hello 15');
   }
 });

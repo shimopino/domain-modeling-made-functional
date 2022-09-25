@@ -17,7 +17,7 @@ export type OneWayTrackFn<T, U, E extends BaseError> = Transform<
  */
 export const bind =
   <T, U, E extends BaseError>(fn: OneWayTrackFn<T, U, E>) =>
-  <F extends BaseError>(input: Result<T, F>) => {
+  <F extends BaseError>(input: Result<T, E | F>) => {
     if (!input.ok) return err(input.error);
 
     return fn(input.value);
