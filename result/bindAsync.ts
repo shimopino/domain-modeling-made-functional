@@ -17,7 +17,7 @@ export type OneWayTrackAsyncFn<T, U, E extends BaseError> = AsyncTransform<
  */
 export const bindAsync =
   <T, U, E extends BaseError>(fn: OneWayTrackAsyncFn<T, U, E>) =>
-  async (input: Result<T, E>) => {
+  async <F extends BaseError>(input: Result<T, F>) => {
     if (!input.ok) return err(input.error);
 
     const result = await fn(input.value);
