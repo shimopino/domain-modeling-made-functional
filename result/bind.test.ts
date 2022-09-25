@@ -15,6 +15,13 @@ const hello = (name: string): Result<string, EmptyStringError> => {
   return ok(`hello ${name}`);
 };
 
+test('1ウェイトラック関数', () => {
+  const input = 'shimokawa';
+  const result = hello(input);
+
+  expect(result.ok).toBe(true);
+});
+
 test('[成功ケース] bind関数で、1ウェイトラック関数を2ウェイトラック関数に変換する', () => {
   const twoTrackHello = bind(hello);
 
