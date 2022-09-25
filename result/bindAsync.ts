@@ -20,5 +20,6 @@ export const bindAsync =
   async (input: Result<T, E>) => {
     if (!input.ok) return err(input.error);
 
-    return fn(input.value);
+    const result = await fn(input.value);
+    return result;
   };
