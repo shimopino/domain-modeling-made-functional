@@ -1,7 +1,9 @@
 /** @type {import('prettier').Config}  */
-export default {
+const config = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'always',
   printWidth: 80,
 };
+
+module.exports = config;

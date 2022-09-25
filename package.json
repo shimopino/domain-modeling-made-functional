@@ -6,7 +6,8 @@
   "scripts": {
     "ch4": "ts-node chapters/ch4/index.ts",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",

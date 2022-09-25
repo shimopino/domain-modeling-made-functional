@@ -1,5 +1,5 @@
 /** @type {import('eslint/lib/shared/types').ConfigData} */
-export default {
+const config = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'neverthrow'],
@@ -12,3 +12,5 @@ export default {
     'neverthrow/must-use-result': 'error',
   },
 };
+
+module.exports = config;
