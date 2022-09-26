@@ -85,3 +85,27 @@ test('連結を深くしていく', () => {
     expect(result.value).toBe('hello 15');
   }
 });
+
+test('連結を深くしていく', () => {
+  const result = pipeWith(10, add10, bind(numberToString), bind(helloString));
+
+  expect(result.ok).toBe(false);
+  if (!result.ok) {
+    const errorType = result.error.type;
+    switch (errorType) {
+      case 'NonNegativeError':
+        errorType;
+        return;
+      case 'Over20Error':
+        errorType;
+        return;
+      case 'Contain20Error':
+        errorType;
+        return;
+      default: {
+        const _: never = errorType;
+        return;
+      }
+    }
+  }
+});
