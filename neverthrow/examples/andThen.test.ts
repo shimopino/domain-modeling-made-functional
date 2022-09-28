@@ -27,6 +27,7 @@ test('andThenを使用して発生しうるエラーをマージしたResult型�
   }
 });
 
+// https://github.com/supermacro/neverthrow/issues/417
 test('型エラーが発生するバグあり', () => {
   const result = Math.random() ? err('wat') : ok(42);
 
