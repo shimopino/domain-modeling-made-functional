@@ -1,4 +1,5 @@
 import { UserId } from '../user/userId';
+import { DueDate } from './dueDate';
 import { TaskId } from './taskId';
 
 export type UnvalidatedTask = {

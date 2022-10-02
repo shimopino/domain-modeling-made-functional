@@ -19,6 +19,7 @@
   "license": "ISC",
   "homepage": "https://github.com/shimopino/domain-modeling-made-functional#readme",
   "devDependencies": {
+    "@types/luxon": "^3.0.1",
     "@types/node": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.4.0",
+    "luxon": "^3.0.4",
     "nanoid": "^4.0.0",
     "neverthrow": "^5.0.0",
     "zod": "^3.19.1"
