@@ -43,5 +43,14 @@ export const DueDate = (dueDate: string): Result<DueDate, ValidationError> => {
     });
   }
 
+  const oneWeekLater = now.plus({ days: 7 });
+
+  if (parseDueDate > oneWeekLater) {
+    return err({
+      type: 'ExceedMaximumDueDateError',
+      from: parseDueDate,
+    });
+  }
+
   return DateTime.fromISO(dueDate);
 };

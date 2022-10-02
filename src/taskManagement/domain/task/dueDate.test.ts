@@ -37,3 +37,19 @@ test('[失敗ケース] 過去の日付を指定した場合にエラーにな�
     from: DateTime.fromISO('2022-10-01T08:30:00.000+00:00'),
   });
 });
+
+test('[失敗ケース] 1週間よりも先を指定した場合にエラーになる', () => {
+  const mockCurrent = DateTime.fromISO('2022-09-01T08:30:00');
+  vi.setSystemTime(mockCurrent.toString());
+
+  // const input = "2022-09-01T08:30:00";
+  const input = '2022-09-08T08:30:01';
+
+  const result = DueDate(input);
+
+  expect(result.isErr()).toBe(true);
+  expect(result._unsafeUnwrapErr()).toEqual({
+    type: 'ExceedMaximumDueDateError',
+    from: DateTime.fromISO('2022-09-08T08:30:01.000+00:00'),
+  });
+});
