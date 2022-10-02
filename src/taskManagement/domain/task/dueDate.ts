@@ -34,5 +34,14 @@ export const DueDate = (dueDate: string): Result<DueDate, ValidationError> => {
     });
   }
 
+  const now = DateTime.now();
+
+  if (parseDueDate < now) {
+    return err({
+      type: 'PastTimeSetError',
+      from: parseDueDate,
+    });
+  }
+
   return DateTime.fromISO(dueDate);
 };
