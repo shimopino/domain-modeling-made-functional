@@ -6,7 +6,7 @@ export type UnvalidatedTask = {
   kind: 'UnvalidatedTask';
   userId: string;
   name: string;
-  dueDate: Date;
+  dueDate: string;
 };
 
 export type ValidatedTask = {
