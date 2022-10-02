@@ -7,7 +7,8 @@
     "ch4": "ts-node chapters/ch4/index.ts",
     "test": "vitest",
     "test:run": "vitest run",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "migrate:dev": "prisma migrate dev --schema ./prisma/schema.prisma"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,13 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-neverthrow": "^1.1.4",
     "prettier": "^2.5.1",
+    "prisma": "^4.4.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5",
     "vitest": "^0.1.27"
   },
   "dependencies": {
+    "@prisma/client": "^4.4.0",
     "neverthrow": "^5.0.0",
     "zod": "^3.19.1"
   }

@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ionutvmi.path-autocomplete",
-    "christian-kohler.path-intellisense"
+    "christian-kohler.path-intellisense",
+    "Prisma.prisma"
   ]
 }

@@ -15,5 +15,8 @@
   },
   "editor.lineNumbers": "on",
   "eslint.packageManager": "npm",
-  "typescript.preferences.importModuleSpecifier": "relative"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }
