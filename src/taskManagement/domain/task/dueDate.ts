@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import { err, Result } from 'neverthrow';
+import { err, ok, Result } from 'neverthrow';
 import { Branded } from '../branded';
 
 export type DueDate = Branded<DateTime, 'DueDate'>;
@@ -52,5 +52,5 @@ export const DueDate = (dueDate: string): Result<DueDate, ValidationError> => {
     });
   }
 
-  return DateTime.fromISO(dueDate);
+  return ok(parseDueDate as DueDate);
 };
