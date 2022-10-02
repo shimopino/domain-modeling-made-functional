@@ -3,12 +3,12 @@ import { Branded } from '../branded';
 
 export type UserId = Branded<string, 'UserId'>;
 
-export type TsakIdNonEmptyError = {
+export type UserIdNonEmptyError = {
   type: 'UserIdNonEmptyError';
   id: string;
 };
 
-export const UserId = (userId: string): Result<UserId, TsakIdNonEmptyError> => {
+export const UserId = (userId: string): Result<UserId, UserIdNonEmptyError> => {
   if (userId.length === 0) {
     return err({
       type: 'UserIdNonEmptyError',
