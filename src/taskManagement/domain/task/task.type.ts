@@ -1,6 +1,6 @@
-import { UserId } from '../user/userId';
-import { DueDate } from './dueDate';
-import { TaskId } from './taskId';
+import { UserId } from '../user/vo/userId';
+import { DueDate } from './vo/dueDate';
+import { TaskId } from './vo/taskId';
 
 export type UnvalidatedTask = {
   kind: 'UnvalidatedTask';

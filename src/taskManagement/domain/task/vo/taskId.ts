@@ -1,5 +1,5 @@
 import { err, ok, Result } from 'neverthrow';
-import { Branded } from '../branded';
+import { Branded } from '../../branded';
 
 export type TaskId = Branded<string, 'TaskId'>;
 

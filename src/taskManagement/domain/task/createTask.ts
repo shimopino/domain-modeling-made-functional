@@ -1,8 +1,8 @@
 import { ok, Result } from 'neverthrow';
 import { tuple } from '../tuple';
-import { generateTaskId } from './generateTaskId';
+import { generateTaskId } from './vo/generateTaskId';
 import { CreatedTask, ValidatedTask } from './task.type';
-import { TsakIdNonEmptyError } from './taskId';
+import { TsakIdNonEmptyError } from './vo/taskId';
 
 type ValidationErrors = TsakIdNonEmptyError;
 

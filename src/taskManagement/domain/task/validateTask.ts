@@ -1,12 +1,12 @@
 import { ok, Result } from 'neverthrow';
 import { tuple } from '../tuple';
-import { UserId, UserIdNonEmptyError } from '../user/userId';
+import { UserId, UserIdNonEmptyError } from '../user/vo/userId';
 import {
   DueDate,
   NotISOFormatError,
   PastTimeSetError,
   ExceedMaximumDueDateError,
-} from './dueDate';
+} from './vo/dueDate';
 import { UnvalidatedTask, ValidatedTask } from './task.type';
 
 type ValidationErrors =

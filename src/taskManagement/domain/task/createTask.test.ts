@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
-import { UserId } from '../user/userId';
+import { UserId } from '../user/vo/userId';
 import { createTask } from './createTask';
-import { DueDate } from './dueDate';
+import { DueDate } from './vo/dueDate';
 import { ValidatedTask } from './task.type';
 import * as nanoid from 'nanoid';
 import { DateTime } from 'luxon';
