@@ -1,5 +1,6 @@
 import { ok, Result } from 'neverthrow';
 import { tuple } from '../tuple';
+import { generateTaskId } from './generateTaskId';
 import { CreatedTask, ValidatedTask } from './task.type';
 import { TsakIdNonEmptyError } from './taskId';
 
@@ -15,5 +16,12 @@ export const createTask: createTask = (model) => {
 
   const values = Result.combine(tuple(taskId, postphoneCount));
 
-  return values.map([]);
+  return values.map(([taskId, postphoneCount]) => ({
+    kind: 'CreatedTask',
+    name: model.name,
+    dueDate: model.dueDate,
+    userId: model.userId,
+    postphoneCount,
+    taskId,
+  }));
 };

@@ -4,6 +4,9 @@
     "esbenp.prettier-vscode",
     "ionutvmi.path-autocomplete",
     "christian-kohler.path-intellisense",
-    "Prisma.prisma"
+    "Prisma.prisma",
+    "ZixuanChen.vitest-explorer",
+    "kingwl.vscode-vitest-runner",
+    "usernamehw.errorlens"
   ]
 }
