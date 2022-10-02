@@ -10,9 +10,9 @@ export const saveCreatedTask =
         dueDate: new Date(model.dueDate.toString()),
         name: model.name,
         postphoneCount: model.postphoneCount,
-        status: '',
+        status: model.status,
         userId: model.userId,
       },
     });
-    return;
+    return model;
   };
