@@ -50,5 +50,6 @@ test('TaskをID付きで生成すると、延期回数は0回に設定されて�
     postphoneCount: 0,
     taskId: 'nanoid',
     userId: 'randomSeed',
+    status: 'TODO',
   });
 });

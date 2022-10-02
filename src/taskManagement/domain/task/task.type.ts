@@ -1,6 +1,7 @@
 import { UserId } from '../user/vo/userId';
 import { DueDate } from './vo/dueDate';
 import { TaskId } from './vo/taskId';
+import { TaskStatus } from './vo/TaskStatus';
 
 export type UnvalidatedTask = {
   kind: 'UnvalidatedTask';
@@ -22,5 +23,6 @@ export type CreatedTask = {
   userId: UserId;
   name: string;
   dueDate: DueDate;
+  status: TaskStatus;
   postphoneCount: number;
 };
