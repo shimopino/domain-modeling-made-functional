@@ -1,10 +1,4 @@
 import { Result, BaseError, err } from './Result';
-import { Transform } from './functions';
-
-export type OneWayTrackFn<T, U, E extends BaseError> = Transform<
-  T,
-  Result<U, E>
->;
 
 /**
  * 1-wayトラック関数を、2-wayトラック関数に変換する
@@ -16,8 +10,8 @@ export type OneWayTrackFn<T, U, E extends BaseError> = Transform<
  * @returns 引数を Result<T, E> を受け入れることができる関数
  */
 export const bind =
-  <T, U, E extends BaseError>(fn: OneWayTrackFn<T, U, E>) =>
-  <F extends BaseError>(input: Result<T, E | F>) => {
+  <A, B, E extends BaseError>(fn: (a: A) => Result<B, E>) =>
+  <F extends BaseError>(input: Result<A, F>) => {
     if (!input.ok) return err(input.error);
 
     return fn(input.value);
