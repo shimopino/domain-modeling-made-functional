@@ -1,4 +1,8 @@
-import { Result, BaseError, err } from './Result';
+import { Result, err } from './Result';
+
+type Bind = <A, B, E>(
+  fn: (a: A) => Result<B, E>,
+) => <F>(input: Result<A, F>) => Result<B, E | F>;
 
 /**
  * 1-wayトラック関数を、2-wayトラック関数に変換する
@@ -9,10 +13,8 @@ import { Result, BaseError, err } from './Result';
  * @param fn 引数T を Result<U, E> に変換する関数
  * @returns 引数を Result<T, E> を受け入れることができる関数
  */
-export const bind =
-  <A, B, E extends BaseError>(fn: (a: A) => Result<B, E>) =>
-  <F extends BaseError>(input: Result<A, F>) => {
-    if (!input.ok) return err(input.error);
+export const bind: Bind = (fn) => (input) => {
+  if (!input.ok) return err(input.error);
 
-    return fn(input.value);
-  };
+  return fn(input.value);
+};
