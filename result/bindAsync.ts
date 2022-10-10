@@ -1,10 +1,4 @@
 import { Result, BaseError, err } from './Result';
-import { AsyncTransform } from './functions';
-
-export type OneWayTrackAsyncFn<T, U, E extends BaseError> = AsyncTransform<
-  T,
-  Result<U, E>
->;
 
 /**
  * 1-wayトラック関数を、2-wayトラック関数に変換する
@@ -16,8 +10,8 @@ export type OneWayTrackAsyncFn<T, U, E extends BaseError> = AsyncTransform<
  * @returns 引数を Result<T, E> を受け入れることができる関数
  */
 export const bindAsync =
-  <T, U, E extends BaseError>(fn: OneWayTrackAsyncFn<T, U, E>) =>
-  async <F extends BaseError>(input: Result<T, E | F>) => {
+  <A, B, E extends BaseError>(fn: (a: A) => Promise<Result<B, E>>) =>
+  async <F extends BaseError>(input: Result<A, F>) => {
     if (!input.ok) return err(input.error);
 
     const result = await fn(input.value);
