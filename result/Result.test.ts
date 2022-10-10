@@ -1,5 +1,19 @@
-import { expect, test } from 'vitest';
+import { expect, it, test } from 'vitest';
 import { err, ok, Result } from './Result';
+
+it('ok', () => {
+  const okResult = ok('ok');
+
+  expect(okResult.ok).toBe(true);
+  expect(okResult.value).toBe('ok');
+});
+
+it('err', () => {
+  const errResult = err('err');
+
+  expect(errResult.ok).toBe(false);
+  expect(errResult.error).toBe('err');
+});
 
 const NameEmptyError = {
   type: 'NameEmptyError',
