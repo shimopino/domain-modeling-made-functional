@@ -1,5 +1,8 @@
-import { BaseError, ok, Result } from './Result';
-import { AsyncTransform } from './functions';
+import { ok, Result } from './Result';
+
+type MapAsync = <A, B>(
+  fn: (a: A) => Promise<B>,
+) => <E>(input: Result<A, E>) => Promise<Result<B, E>>;
 
 /**
  * Result型ではない入出力の型を有する関数の出力を、Result型に変換する
@@ -10,13 +13,11 @@ import { AsyncTransform } from './functions';
  * @param fn Result型を使用しない関数
  * @returns 元の関数の出力をResult型に変換した関数
  */
-export const mapAsync =
-  <T, U>(fn: AsyncTransform<T, U>) =>
-  async <E extends BaseError>(input: Result<T, E>) => {
-    if (!input.ok) {
-      return input;
-    }
+export const mapAsync: MapAsync = (fn) => async (input) => {
+  if (!input.ok) {
+    return input;
+  }
 
-    const result: U = await fn(input.value);
-    return ok(result);
-  };
+  const result = await fn(input.value);
+  return ok(result);
+};
