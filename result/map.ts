@@ -1,5 +1,6 @@
-import { BaseError, ok, Result } from './Result';
-import { Transform } from './functions';
+import { ok, Result } from './Result';
+
+type Map = <A, B>(fn: (a: A) => B) => <E>(input: Result<A, E>) => Result<B, E>;
 
 /**
  * Result型ではない入出力の型を有する関数の出力を、Result型に変換する
@@ -10,12 +11,10 @@ import { Transform } from './functions';
  * @param fn Result型を使用しない関数
  * @returns 元の関数の出力をResult型に変換した関数
  */
-export const map =
-  <T, U>(fn: Transform<T, U>) =>
-  <E extends BaseError>(input: Result<T, E>) => {
-    if (!input.ok) {
-      return input;
-    }
+export const map: Map = (fn) => (input) => {
+  if (!input.ok) {
+    return input;
+  }
 
-    return ok(fn(input.value));
-  };
+  return ok(fn(input.value));
+};
