@@ -15,3 +15,11 @@ export const err = <E>(error: E): Err<E> => {
     error,
   };
 };
+
+export const isOk = <T, E>(input: Result<T, E>): input is Ok<T> => {
+  return input.ok;
+};
+
+export const isErr = <T, E>(input: Result<T, E>): input is Err<E> => {
+  return !input.ok;
+};

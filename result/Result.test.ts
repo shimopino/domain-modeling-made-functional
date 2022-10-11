@@ -1,5 +1,5 @@
 import { expect, it, test } from 'vitest';
-import { err, ok, Result } from './Result';
+import { err, isErr, isOk, ok, Result } from './Result';
 
 it('ok', () => {
   const okResult = ok('ok');
@@ -8,11 +8,25 @@ it('ok', () => {
   expect(okResult.value).toBe('ok');
 });
 
+it('isOk', () => {
+  const okResult = ok('ok');
+  const isOkResult = isOk(okResult);
+
+  expect(isOkResult).toBe(true);
+});
+
 it('err', () => {
   const errResult = err('err');
 
   expect(errResult.ok).toBe(false);
   expect(errResult.error).toBe('err');
+});
+
+it('isOk', () => {
+  const errResult = err('err');
+  const isErrResult = isErr(errResult);
+
+  expect(isErrResult).toBe(true);
 });
 
 const NameEmptyError = {
